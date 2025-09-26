@@ -1,26 +1,27 @@
 {
     "compilerOptions": {
-        "strict": true,
-        "module": "NodeNext",
-        "target": "es2017",
-        "esModuleInterop": true,
-        "allowJs": true,
-        "checkJs": true,
-        "skipLibCheck": true,
-        "rootDir": "./src",
-        "outDir": "./dist",
-        "paths": {
+        "strict":            true,
+        "module":            "NodeNext",
+        "target":            "es2022",
+        "resolveJsonModule": true,
+        "esModuleInterop":   true,
+        "allowJs":           true,
+        "checkJs":           true,
+        "skipLibCheck":      true,
+        "rootDir":           "./src",
+        "outDir":            "./dist",
+        "paths":             {
             "#*": [
                 "./src/*",
                 "./dist/*"
             ]
         }
     },
-    "include": [
+    "include":         [
         "src/**/*.ts",
-        "src/**/*.js",
+        "src/**/*.js"
     ],
-    "exclude": [
+    "exclude":         [
         "node_modules",
         "src/**/*.test.*",
         "src/**/*.spec.*"

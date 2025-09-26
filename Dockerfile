@@ -17,8 +17,15 @@ RUN npm run build
 
 FROM node:20-alpine AS prod
 
+RUN npm install pm2 -g
+RUN pm2 install pm2-logrotate
+RUN pm2 set pm2-logrotate:max_size 10M
+RUN pm2 set pm2-logrotate:rotateInterval '0 0 * * MON'
+
 WORKDIR /app
 
 COPY --from=build /app/package*.json .
 COPY --from=deps-prod /app/node_modules ./node_modules
 COPY --from=build /app/dist ./dist
+
+CMD pm2-runtime ./dist/config/pm2/pm2.config.js

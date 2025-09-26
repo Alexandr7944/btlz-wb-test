@@ -10,9 +10,9 @@ const connectionSchema = z.object({
     password: z.string(),
 });
 
-const NODE_ENV = env.NODE_ENV ?? "development";
+const NODE_ENV = env.NODE_ENV || "development";
 
-const knegConfigs: Record<typeof NODE_ENV, Knex.Config> = {
+const knexConfigs: Record<typeof NODE_ENV, Knex.Config> = {
     development: {
         client: "pg",
         connection: () =>
@@ -67,4 +67,4 @@ const knegConfigs: Record<typeof NODE_ENV, Knex.Config> = {
     },
 };
 
-export default knegConfigs[NODE_ENV];
+export default knexConfigs[NODE_ENV];

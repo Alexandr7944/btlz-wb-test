@@ -1,6 +1,25 @@
-import knex, { migrate, seed } from "#postgres/knex.js";
+import dotenv from "dotenv";
+import { migrate, seed } from "#postgres/knex.js";
+import BoxTariff from "#boxTariffs/BoxTariffs.service.js";
+import GoogleSheetsService from "#GoogleSheets/GoogleSheets.service.js";
 
-await migrate.latest();
-await seed.run();
+dotenv.config();
+require('console-stamp')(console, {
+    format: ':date(dd.mm.yyyy HH:MM:ss.l) :label(10)'
+} );
 
-console.log("All migrations and seeds have been run");
+(async () => {
+    try {
+        await migrate.latest();
+        await seed.run();
+
+        console.log("All migrations and seeds have been run");
+
+        const boxTariff = new BoxTariff(process.env.CLIENT_KEY as string);
+        await boxTariff.collectTariffs();
+        const tariffs = await boxTariff.getTariffs();
+        await new GoogleSheetsService().refreshData(tariffs);
+    } catch (error) {
+        console.error("Error:", error);
+    }
+})();

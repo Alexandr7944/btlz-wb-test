@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
-import { z } from "zod";
 dotenv.config();
+import { z } from "zod";
 
 const envSchema = z.object({
     NODE_ENV: z.union([z.undefined(), z.enum(["development", "production"])]),
@@ -19,6 +19,7 @@ const envSchema = z.object({
             .regex(/^[0-9]+$/)
             .transform((value) => parseInt(value)),
     ]),
+    CLIENT_KEY: z.string(),
 });
 
 const env = envSchema.parse({
@@ -29,6 +30,7 @@ const env = envSchema.parse({
     POSTGRES_PASSWORD: process.env.POSTGRES_PASSWORD,
     NODE_ENV: process.env.NODE_ENV,
     APP_PORT: process.env.APP_PORT,
+    CLIENT_KEY: process.env.CLIENT_KEY,
 });
 
 export default env;
