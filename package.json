@@ -3,11 +3,12 @@
     "version": "1.0.0",
     "description": "your description",
     "main": "app.js",
+    "type": "commonjs",
     "scripts": {
         "dev": "nodemon --watch src --ext ts --exec tsx src/app.ts",
         "watch:build": "tsc --build --force --verbose --watch",
         "knex:dev": "tsx src/utils/knex.ts",
-        "build": "tsc --allowJs",
+        "build": "tsc --allowJs --project tsconfig.json && tsc-alias",
         "start": "node dist/app.js",
         "knex": "node dist/utils/knex.js",
         "tsc:check": "tsc --allowJs --noEmit",
@@ -17,13 +18,7 @@
         "eslint-fix": "eslint --fix"
     },
     "imports": {
-        "#*": [
-            "./dist/*",
-            "./src/*"
-        ]
-    },
-    "_moduleAliases": {
-        "#": "src"
+        "#": "./dist/"
     },
     "author": "lucard17",
     "license": "ISC",
@@ -33,6 +28,7 @@
         "console-stamp": "^3.1.2",
         "date-fns": "^4.1.0",
         "dotenv": "^16.3.1",
+        "express": "^5.1.0",
         "googleapis": "^144.0.0",
         "knex": "^3.1.0",
         "log4js": "^6.9.1",
@@ -48,7 +44,7 @@
         "@types/cookie-parser": "^1.4.8",
         "@types/cors": "^2.8.17",
         "@types/dateformat": "^5.0.2",
-        "@types/express": "^4.17.21",
+        "@types/express": "^4.17.23",
         "@types/jest": "^29.5.11",
         "@types/jsonwebtoken": "^9.0.8",
         "@types/knex": "^0.16.1",
@@ -65,6 +61,7 @@
         "nodemon": "^3.0.2",
         "prettier": "^3.3.3",
         "prettier-plugin-jsdoc": "^1.3.0",
+        "tsc-alias": "^1.8.16",
         "tsx": "^4.20.5",
         "typescript": "^5.9.2"
     }

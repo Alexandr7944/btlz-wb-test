@@ -1,1 +1,5 @@
-{"root":["./src/app.ts","./src/googlesheets/googlesheets.repository.ts","./src/googlesheets/googlesheets.service.ts","./src/googlesheets/type.ts","./src/boxtariffs/boxtariffs.repository.ts","./src/boxtariffs/boxtariffs.service.ts","./src/boxtariffs/schema.ts","./src/config/env/env.ts","./src/config/knex/knexfile.ts","./src/postgres/knex.ts","./src/utils/knex.ts","./src/config/knex/migration.stub.js","./src/config/knex/seed.stub.js","./src/config/pm2/pm2.config.js","./src/postgres/migrations/20250227184908_spreadsheets.js","./src/postgres/migrations/20250924165351_box_tariffs.js","./src/postgres/seeds/spreadsheets.js"],"version":"5.9.2"}
+{"root":["./src/app.ts",
+"./src/googlesheets/googlesheets.repository.ts","./src/googlesheets/googlesheets.service.ts","./src/googlesheets/type.ts",
+"./src/boxtariffs/boxtariffs.repository.ts","./src/boxtariffs/boxtariffs.service.ts","./src/boxtariffs/schema.ts",
+"./src/config/env/env.ts","./src/config/knex/knexfile.ts","./src/postgres/knex.ts","./src/utils/knex.ts","./src/config/knex/migration.stub.js","./src/config/knex/seed.stub.js","./src/config/pm2/pm2.config.js","./src/postgres/seeds/spreadsheets.js","/src/routes.ts","./src/server.ts","./src/spreadsheets/spreadsheets.controller.ts","./src/spreadsheets/spreadsheets.repository.ts"
+],"version":"5.9.2"}

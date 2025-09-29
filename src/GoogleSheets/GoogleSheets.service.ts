@@ -2,7 +2,7 @@ import { google, sheets_v4 } from "googleapis";
 import { format } from "date-fns";
 import { BoxTariffRawInfo } from "#boxTariffs/schema.js";
 import GoogleSheetsRepository from "./GoogleSheets.repository.js";
-import { GoogleSheetsCredentials } from "#GoogleSheets/type";
+import { GoogleSheetsCredentials } from "./type.js";
 
 class GoogleSheetsService {
     private repository!: GoogleSheetsRepository;
