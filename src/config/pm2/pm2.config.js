@@ -6,7 +6,12 @@ module.exports = {
             // https://crontab.guru/every-1-hour
             cron_restart: '0 * * * *',
             autorestart:  false,
-            script:       `node ./dist/app.js`,
-        },
+            script:       `node ./dist/scripts/refreshSheets.js`,
+        },{
+            name: 'server',
+            cron_restart: '0 0 */1 * *',
+            autorestart: false,
+            script: `node ./dist/app.js`,
+        }
     ]
 };

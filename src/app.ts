@@ -1,25 +1,15 @@
-import dotenv from "dotenv";
-import { migrate, seed } from "#postgres/knex.js";
-import BoxTariff from "#boxTariffs/BoxTariffs.service.js";
-import GoogleSheetsService from "#GoogleSheets/GoogleSheets.service.js";
+import "dotenv/config";
+import express from "express";
+import Server from "#Server.js";
 
-dotenv.config();
-require('console-stamp')(console, {
-    format: ':date(dd.mm.yyyy HH:MM:ss.l) :label(10)'
-} );
+const app = express();
+new Server(app);
 
-(async () => {
-    try {
-        await migrate.latest();
-        await seed.run();
+let PORT = process.env.APP_PORT || 5000;
 
-        console.log("All migrations and seeds have been run");
-
-        const boxTariff = new BoxTariff(process.env.CLIENT_KEY as string);
-        await boxTariff.collectTariffs();
-        const tariffs = await boxTariff.getTariffs();
-        await new GoogleSheetsService().refreshData(tariffs);
-    } catch (error) {
-        console.error("Error:", error);
-    }
-})();
+app.listen(PORT, () => console.log(`Server is running on port ${PORT}.`))
+    .on("error", (err: any) => {
+    err.code === "EADDRINUSE"
+        ? console.log("Error: address already in use")
+        : console.log(err);
+});
