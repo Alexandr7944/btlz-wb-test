@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import { migrate, seed } from "#postgres/knex.js";
 import BoxTariff from "#boxTariffs/BoxTariffs.service.js";
-import GoogleSheetsService from "#GoogleSheets/GoogleSheets.service.js";
+import GoogleSheetsService from "#googleSheets/GoogleSheets.service.js";
 
 require('console-stamp')(console, {
     format: ':date(dd.mm.yyyy HH:MM:ss.l) :label(10)'
